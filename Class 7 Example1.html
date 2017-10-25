@@ -5,23 +5,32 @@
             body {
                 margin: 0;
                 }
-            #one {
-                background-color:red;
+            #logo {
+                background-color:rgba(255,0,0,0.8);
                 width:25%;
                 height:20vh;
+                position:fixed;
+                top:0;
+                left:0;
+                z-index:1;
                 }
-            #two {
-                background-color:blue;
+            #nav {
+                background-color:rgba(0,0,255,0.8);
                 width:75%;
                 height:20vh;
+                position:fixed;
+                top:0;
+                right:0;
+                z-index:1;
                 }
-            #three {
+            #main {
                 background-color:orange;
-                border-right:5px solid black;
                 width:100%;
                 min-height:60vh;
+                margin-top:20vh;
+                position:relative;
                 }
-            #four {
+            #footer {
                 background-color:yellow;
                 width:100%;
                 height: 20vh;
@@ -31,21 +40,51 @@
                     box-sizing:border-box;
                     vertical-align:top;
                     }
-            
+            #image {
+                    position:absolute;
+                    right:0;
+                    top:0;
+                    }
         </style>
     
     </head>
     <body>
-        <div id="one" class="column">
-            Test
+        <div id="logo" class="column">
         </div><!--
-        --><div id="two" class="column">
-            Test
+        --><div id="nav" class="column">
         </div><!--
-        --><div id="three" class="column">
-            Test
+        --><div id="main" class="column">
+            test text
+            <img id="image" src="https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg" height="300" width="300">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            more text
         </div><!--
-        --><div id="four" class="column">
+        --><div id="footer" class="column">
         </div>
     </body>
 
