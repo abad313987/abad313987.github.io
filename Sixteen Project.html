@@ -3,6 +3,45 @@
     <title>Sixteen Creative Agency</title>
     <head>
         <style>
+            body {
+                margin: 0;
+                }
+            #header {
+                background-color:rgb(172,211,115);
+                width:75%;
+                height:10vh;
+
+                }
+            #logo {
+                background-image:url(images/1logo.png);
+                background-repeat:no-repeat;
+                margin-top: 1.5vh;
+                margin-left: 5vw;
+                margin-bottom: 1.5vh;                
+                    }
+            #navbox {
+                    height:10vh;
+                    width:10vh;
+                    background-color:rgb(137,168,92)
+                    }
+            #mobilenav {
+                background-image:url(Images/2icon.png);
+                width:4vh;
+                height:4vh;
+                margin-top:3vh;
+                margin-bottom:3vh;
+                margin-left:3vh;
+                margin-right:3vh;
+                }
+            .main {
+                height:90vh;
+                color:rgb(154,189,103)
+                }
+            .column {
+                    display:inline-block;
+                    box-sizing:border-box;
+                    vertical-align:top;
+                    }
             
             h1 {
                     text-align:center;
@@ -17,17 +56,30 @@
                     font-family: 'Droid Serif', serif;
                     font-size:3.5vm;
                     color:rgb(245,245,245);
-                 
-                }
+                 }
             
         </style>
-            <img src="1logo.png" height:7vh width:5vw>
+            
     </head>
     <body>
-        
-        <h1 class="center">WE ARE SIXTEEN CREATIVE AGENCY</h1>
+        <div id="header" class="column">
+            <img id="logo" src="Images/1logo.png">
+        </div><!--
+        --><div id="navbox" class="column">
+        </div><!--
+        --><div id="mobilenav" class="column">
+        </div>
+        <div id="header" class="column">
+            </div><!--
+        --><div id="navbox" class="column">
+            </div><!--
+        --><div id="mobilenav" class="column">
+            </div>
+        <div>
+        <h1>WE ARE SIXTEEN CREATIVE AGENCY</h1>
         <br />
-        <h2 class="center">Based on Jakarta, Indonesia</h2>
+        <h2>Based on Jakarta, Indonesia</h2>
+        </div>
     </body>
 
 </html>
