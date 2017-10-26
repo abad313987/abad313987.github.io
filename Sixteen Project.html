@@ -10,7 +10,6 @@
                 background-color:rgb(172,211,115);
                 width:93%;
                 height:10vh;
-                position:relative;
                 }
             #logo {
                 background-image:url(images/1logo.png);
@@ -35,29 +34,51 @@
                 }
             #main {
                 height:90vh;
-                color:rgb(154,189,103);
+                background-color:rgb(154,189,103);
+                background-image:url(Images/4siluetBG.png);
+                background-position: bottom;
+                background-size:100vw;
                 }
             .column {
                     display:inline-block;
                     box-sizing:border-box;
                     vertical-align:top;
                     }
-        
-            
+            #h1 {
+                font-weight:bold;
+                font-size:5vmin;
+                font-family: 'Source Sans Pro', sans-serif;
+                text-align:center;
+                vertical-align: middle;
+                }
+            #h2 {
+                font-style:italic;
+                font-size:3.5vmin;
+                font-family:'Droid Serif',serif;
+                text-align:center;
+                vertical-align: middle;
+               }
         </style>
             
     </head>
     <body>
         <div id="header" class="column">
         </div><!--
+    ---><div id="logo" class="column">
+        </div><!--
     ---><div id="navbox" class="column">
         </div><!--
     ---><div id="mobilenav" class="column">
         </div><!--
     ---><div id="main" class="column">
-        </div><!--
-    ---><div id="footer" class="column">
         </div>
+        <h1 id="h1">WE ARE SIXTEEN CREATIVE AGENCY</h1>
+        <h2 id="h2">Based on Jakarta, Indonesia</h2>
+        
+        
+        <div id="footer" class="column">
+        </div>
+
     </body>
 
 </html>
