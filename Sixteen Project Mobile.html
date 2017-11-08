@@ -69,6 +69,48 @@
             #logoimage {
                 height:7vh;
                     }
+            #desktopnav {
+                display: none;
+                }
+        @media all and (min-width: 1000px)
+                {
+                #navbox {
+                    display: none;
+                    }
+                #desktopnav {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    margin-right: 7vw;
+                    }
+                .desktopnavlinks {
+                    font-weight: 900;
+                    font-size: 2.5vh;
+                    font-family: "Source Sans Pro",sans-serif;
+                    color: white;
+                    text-decoration: none;
+                    line-height: 10vh;
+                    margin-left: 2vw;
+                    }
+                main {
+                    background-image: url(Images/4siluetBGDesktop.png);
+                    }
+                #logo {
+                    margin-left: 7vw;
+                    }
+                }
+            
+        @media all and (min-width: 1200px) 
+                {
+                #logo {
+                    margin-left: 12.5vw;
+                    }
+                    
+                #desktopnav {
+                    margin-right: 12.5vw;
+                    }
+                }
         </style>
             
     </head>
@@ -82,6 +124,16 @@
                 <img id="image" src="images/2icon.png">
         </div>
         </div>
+            <div id="desktopnav">
+            <a href="#" class="desktopnavlinks">HOME</a>
+            <a href="#" class="desktopnavlinks">ABOUT</a>
+            <a href="#" class="desktopnavlinks">SERVICES</a>
+            <a href="#" class="desktopnavlinks">TEAM</a>
+            <a href="#" class="desktopnavlinks">WORKS</a>
+            <a href="#" class="desktopnavlinks">CLIENT SAY</a>
+            <a href="#" class="desktopnavlinks">BLOG</a>
+            <a href="#" class="desktopnavlinks">CONTACT</a>
+            </div>
         </div><!--
     ---><div id="main" class="column">
             <h1 id="h1">WE ARE SIXTEEN CREATIVE AGENCY</h1>
