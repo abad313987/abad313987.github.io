@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .correct {
+                color: green;
+                }
+            .wrong {
+                color: red;
+                }
+        </style>
+    
+    </head>
+    <body>
+        
+        <label class="questionText">What is 5+5?</label>
+        <input type="text" class="questionAnswer" answer="10" />
+        <br />
+        
+        
+        <label class="questionText">What is 5*5?</label>
+        <input type="text" class="questionAnswer" answer="25" />
+        <br />
+        
+        <label class="questionText">What is the Fastest Animal?</label>
+        <input type="text" class="questionAnswer" answer="Cheetah" />
+        <br />
+        <button type="button" id="submitAnswers">Submit</button>
+        <span id="displayText"></span>
+            <script 
+                src="https://code.jquery.com/jquery-2.2.4.js"
+                integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+                crossorigin="anonymous"></script>
+            <script
+                src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+                integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+                crossorigin="anonymous"></script>
+            <script src="CommonFunc.js"></script>
+        <script>
+           
+            //ALWAYS BREAK IT DOWN BY PARTS//
+            //on click of submit button
+           $("#submitAnswers").click(function(e){
+               var counter = 0;
+            //get all the .questionAnswer inputs
+               $(".questionAnswer").each(function(){
+                    //get the user answer
+                   var userAnswer = $(this).val();
+                //get the correct answer
+                   var correctAnswer = $(this).attr("answer");
+                //compare the values
+                   if(userAnswer == correctAnswer){
+                       counter++;
+                       $(this).prev().removeClass("wrong").addClass("correct");
+                       //if correct make label green
+                   }else{
+                       $(this).prev().removeClass("correct").addClass("wrong");
+                       //if wrong make label red
+                   }
+               })
+               $("#displayText").text("You got "+counter+" answer(s) right!");
+           });
+
+        </script>
+    </body>
+</html>
