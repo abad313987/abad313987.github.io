@@ -58,7 +58,11 @@
                        //if wrong make label red
                    }
                })
+               if(counter < $(".questionAnswer").length){
                $("#displayText").text("You got "+counter+" answer(s) right!");
+                }else{
+                    $("#displayText").text("You got all of them right!");
+                }
            });
 
         </script>
