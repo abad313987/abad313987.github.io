@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    </head>
+    <body>
+         
+        <span>Please Enter Your Zip Code:</span>
+        <input id="Zip" />
+        <button type="button" id="submit">Submit</button>
+        <br />
+            <script 
+                src="https://code.jquery.com/jquery-2.2.4.js"
+                integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+                crossorigin="anonymous"></script>
+            <script>
+                $("#submit").click(function(e){
+                    var userZip = $("#Zip").val();
+                    $.ajax({
+	                   url: "http://api.openweathermap.org/data/2.5/weather",
+	                   data: {
+		                  units: "imperial",
+		                  zip: userZip,
+		                  APIKEY: "2117c2b1ddb21bc7921325ae970c66de"
+	                   }
+                    }).success(function(data){
+                        $("body").append("<span>The Current Temp in "+
+                        data.name+" is "+
+                        data.main.temp+"F</span><br />")
+                    });
+                })
+            </script>
+    </body>
+</html>
