@@ -9,6 +9,10 @@
         <input id="Zip" />
         <button type="button" id="submit">Submit</button>
         <br />
+        <br />
+        <span>Select the Wanted Color:</span>
+        <input type="color" id="color" />
+        <button type="button" id="setColor">Set Color</button>
             <script 
                 src="https://code.jquery.com/jquery-2.2.4.js"
                 integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
@@ -29,6 +33,25 @@
                         data.main.temp+"F</span><br />")
                     });
                 })
+
+                $("#setColor").click(function(e){
+                var userColor = $("#color").val();
+                $.ajax({
+                    method: "PUT",
+                    url: "https://api.lifx.com/v1/lights/all/state",
+                    headers: {
+                        "Authorization": "Bearer c2035038f2e650b246885e9aa7f4135f4eb3138bdb602d7ba84c85871042e248"
+                    },
+                    data: {
+                        "power": "on",
+                        "color": userColor,
+                        "brightness": 1,
+                        "duration": 3
+                    }
+                }).success(function(data){
+                    console.log("Color updated!");
+                });
+            });
             </script>
     </body>
 </html>
