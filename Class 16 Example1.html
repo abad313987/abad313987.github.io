@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .ball, .ballPlaceHolder{
+                width: 10vw;
+                height: 10vw;
+                border-radius: 50%;
+                border: 1vw solid black;
+                background-color: red;
+                position: absolute;
+                top: -100%;
+                left: -100%;
+                box-sizing: border-box;
+            }
+            .ballPlaceHolder {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ballPlaceHolder"></div>
+        <button type="button" id="addBall">Add Ball</button>
+        <script 
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+        <script src="CommonFunc.js"></script>
+        
+        <script>
+            var listOfBalls = [];
+            var counter = 0;
+            
+            var Ball = function(){
+                this.top = null;
+                this.left = null;
+                this.color = null;
+                this.leftChange = null;
+                this.topChange = null;
+                this.id = null;
+                
+                
+                this.move = function(){
+        
+                }
+                
+                this.draw = function(){
+                    $("#ball"+this.id).css({
+                        "top": this.top,
+                        "left": this.left,
+                        "background-color": this.color
+                    });
+                }
+              }
+            
+            function addBall(){
+                var circleSize = $(".circle").outerWidth();
+                var maxWidth = $(document).width() - circleSize;
+                var maxHeight = $(document).height() - circleSize;
+                
+                var newBall = new Ball();
+                newBall.top = randomNumber(0, maxHeight);
+                newBall.left = randomNumber (0, maxWidth);
+                newBall.color = randomColor();
+                newBall.id = counter;
+                
+                listOfBalls.push(newBall);
+                $("body").append("<div id='ball"+counter+"' class='ball'></div>");
+                newBall.draw();
+                counter++;
+            }
+            
+            $("#addBall").click(addBall);
+            
+            function moveCircle(){
+                var circleSize = $(".circle").outerWidth();
+                var maxWidth = $(document).width() - circleSize;
+                var maxHeight = $(document).height() - circleSize;
+                $(".circle").each(function(){
+                var randomTop = randomNumber(0, maxHeight);
+                var randomLeft = randomNumber(0, maxWidth);
+                var rColor = randomColor();
+                $(this).css({
+                    "top": randomTop,
+                    "left": randomLeft,
+                    "background-color": rColor
+                    });
+                  });
+                }
+            
+        </script>
+    </body>
+</html>
