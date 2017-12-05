@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    
+    </head>
+    <body>
+        
+        <label>Guess a Number Between 1 and 100</label>
+        <input id="guess" />
+        <button type="button" id="tryNumber">Guess</button>
+        <br />
+        <br />
+        <span id="result"></span>
+        <script 
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+        <script src="CommonFunc.js"></script>
+        <script>
+            //have computer come up with random number 1-100
+            var computerNumber = randomNumber(1,100);
+            //click on some button
+            $("#tryNumber").click(function(e){
+                //read in what user guessed
+                var userNumber = $("#guess").val();
+                //compare their guess with computer number
+                //anytime you see compare use IF logic
+                if(computerNumber == userNumber){
+                    //display text if correct or incorrect
+                    $("#result").text("You guessed the correct number!");
+                
+                }else{
+                    //display text if correct or incorrect
+                    $("#result").text("Keep Trying!");    
+                }                
+            });
+        </script>
+    </body>
+</html>
