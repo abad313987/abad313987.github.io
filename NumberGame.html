@@ -1,41 +1,68 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            
-        </style>
     
     </head>
     <body>
-        
-        <label>Guess a Number Between 1 and 100</label>
+        <label>Please guess the number: </label>
         <input id="guess" />
         <button type="button" id="tryNumber">Guess</button>
-        <br />
-        <br />
+        <span id="counter"></span>
+        <br/>
+        <label>Min</label>
+        <input id="min" value="1" />
+        <label>Max</label>
+        <input id="max" value="100" />
+        <button type="button" id="reset">Reset Game</button>
+        <br/>
+        <br/>
+        <br/>
         <span id="result"></span>
-        <script 
-            src="https://code.jquery.com/jquery-2.2.4.js"
-            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-            crossorigin="anonymous"></script>
-        <script src="CommonFunc.js"></script>
+        <script
+          src="https://code.jquery.com/jquery-2.2.4.js"
+          integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+          crossorigin="anonymous"></script>
+        <script src="common.js"></script>
         <script>
-            //have computer come up with random number 1-100
-            var computerNumber = randomNumber(1,100);
+            //have the computer come up with random number 1-100
+            var computerNumber = randomNumber(1, 100);
+            var counter = 0;
+            var gameOver = false;
             //click on some button
             $("#tryNumber").click(function(e){
-                //read in what user guessed
-                var userNumber = $("#guess").val();
-                //compare their guess with computer number
-                //anytime you see compare use IF logic
-                if(computerNumber == userNumber){
-                    //display text if correct or incorrect
-                    $("#result").text("You guessed the correct number!");
-                
+                if(!gameOver){
+                    //read in whatever the user guessed
+                    var userNumber = $("#guess").val();
+                    var diff = Math.abs(computerNumber - userNumber);
+                    //compare their guess with computer number
+                    if(computerNumber == userNumber){
+                        //display text if correct or incorrect
+                        $("#result").text("You guessed the number correctly!");
+                        gameOver = true;
+                    }else if(diff <= 5){
+                        $("#result").text("You're burning up!");
+                    }else if(diff <= 15){
+                        $("#result").text("You're getting warm!");     
+                    }else{
+                        //display text if correct or incorrect
+                        $("#result").text("You're cold!");
+                    }
+                    counter++;
+                    $("#counter").text("You've guessed "+counter+" time(s)");
                 }else{
-                    //display text if correct or incorrect
-                    $("#result").text("Keep Trying!");    
-                }                
+                    $("#result").text("You've already won, please reload the page to try again.");
+                }
+            });
+
+            $("#reset").click(function(e){
+                var min = $("#min").val();
+                var max = $("#max").val();
+                computerNumber = randomNumber(min, max);
+                counter = 0;
+                gameOver = false;
+                $("#counter").text("");
+                $("#result").text("");
+                $("#guess").val("");
             });
         </script>
     </body>
