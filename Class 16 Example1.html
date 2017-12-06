@@ -15,8 +15,8 @@
                 left: 0;
             }
             .ball, .ballPlaceHolder{
-                width: 3vw;
-                height: 3vw;
+                width: 15vw;
+                height: 15vw;
                 border-radius: 50%;
                 border: 5px solid black;
                 background-color: red;
@@ -113,6 +113,45 @@
             
             $("#addBall").click(addBall);
             
+            function checkCollision(){
+                var listofCollisions = {};
+                for(var i in listOfBalls){
+                    if(!listofCollisions[i]){
+                        var currentBall = listOfBalls[i];
+                        var curBallTop = currentBall.top;
+                        var curBallLeft = currentBall.left;
+                        for(var j in listOfBalls){
+                            if(i != j && !listofCollisions[j]){
+                                var compBall = listOfBalls[j];
+                                var compBallTop = compBall.top;
+                                var compBallLeft = compBall.left;
+                                var diffTop = Math.abs(curBallTop - compBallTop);
+                                var diffLeft = Math.abs(curBallLeft - compBallLeft);
+                                var diffDiag = pyththeory(diffLeft, diffTop);
+                                if(diffDiag < circleSize*2){
+                                    listofCollisions[i] = true;
+                                    listofCollisions[j] = true;
+                                       // currentBall.leftChange *= -1;
+                                       // currentBall.topChange *= -1;
+                                       // compBall.leftChange *= -1;
+                                       // compBall.topChange *= -1;
+                                    $("#ball"+currentBall.id).remove();
+                                    $("#ball"+compBall.id).remove();
+                                }
+                            }
+                        }
+                    }   
+            
+                }
+                var arrayOfCollisions = [];
+                for(var k in listofCollisions){
+                    arrayOfCollisions.push(k);
+                }
+                arrayOfCollisions = arrayOfCollisions.sort().reverse();
+                for(var l in arrayOfCollisions){
+                    listOfBalls.splice(arrayOfCollisions[l],1);
+                }
+            }
             function moveAll(){
                 circleSize = $(".ballPlaceHolder").outerWidth()/2;
                 maxWidth = $("body").width() - circleSize;
@@ -120,6 +159,7 @@
                 for(var i in listOfBalls){
                     listOfBalls [i].move();  
                   }
+                checkCollision();
                 }
             
             setInterval(moveAll, 0);
