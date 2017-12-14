@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+                }
+            .box1 {
+                width: 25vw;
+                height: 40vh;
+                background-color: red;
+                border: 1px solid black;
+                text-align: center;
+                display: inline-block;
+                margin-left: 3vw;
+                }
+        
+            .box2 {
+                width: 25vw;
+                height: 40vh;
+                background-color: lightblue;
+                border: 1px solid black;
+                display: inline-block;
+                margin-left: 3vw;
+                text-align: center;
+                }
+            
+            .box3 {
+                width: 25vw;
+                height: 40vh;
+                background-color: yellow;
+                border: 1px solid black;
+                display: inline-block;
+                margin-left: 3vw;
+                text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <label>Task Name</label>
+        <input type="input" id="task" />
+            <select>
+                <option></option>
+                    <option>Current Tasks</option>
+                    <option>Grocery List</option>    
+                    <option>Future Tasks</option>
+            </select>
+        <button type="button" id="addTask">Add Task</button>
+        <br />
+        <br />
+        
+        <div class="box1">Current Tasks</div>
+        <div class="box2">Grocery List</div>
+        <div class="box3">Future Tasks</div>
+        <div id= "container"></div>
+         <script 
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+        <script src="CommonFunc.js"></script>
+        <script>
+            $("#addTask").click(function(e){
+                $("#container").append("<div class='task'><span class='desc'>"+taskDesc+"</span><span class='remove'>x</span></div>");
+            });
+            
+        </script>
+    </body>
+</html>
