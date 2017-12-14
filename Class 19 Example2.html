@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                perspective: 1000px;
+            }
+            
+            .card {
+                width: 20vw;
+                height: 20vw;
+                display: inline-block;
+                position: relative;
+                transform-style: preserve-3d;
+                transition: 1s;
+            }
+            
+            .flip {
+                transform: rotateY(180deg);
+            }
+            
+            .side {
+                width: 20vw;
+                height: 20vw;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            .back {
+                transform: translateZ(-1px) rotateY(180deg);
+                background-color: lightgray;
+            }
+            
+            #mountain1 {
+                background-image: url('http://www.telegraph.co.uk/content/dam/Travel/galleries/travel/activityandadventure/The-worlds-most-beautiful-mountains/mountains-cerro_3374092a.jpg');
+                background-size: cover;
+            }
+            
+            #mountain2 {
+                background-image: url('http://buzzkaro.com/wp-content/uploads/2017/09/rainbow-mountains-9.jpg');
+                background-size: cover;
+            }
+        
+            #mountain3 {
+                background-image: url('http://www.telegraph.co.uk/content/dam/Travel/galleries/travel/activityandadventure/The-worlds-most-beautiful-mountains/mountains-matterho_3374098a-xlarge.jpg');
+                background-size: cover;
+            }
+            
+            #mountain4 {
+                background-image: url('https://i2.wp.com/englishlakes.blog/wp-content/uploads/2015/12/505118093-x3.jpg?resize=702%2C333&ssl=1');
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div id="mountain1" class="front side"></div>
+            <div class="back side">
+                <h1>Mountains</h1>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div id="mountain2" class="front side"></div>
+            <div class="back side">
+                <h1>Mountains2</h1>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div id="mountain3" class="front side"></div>
+            <div class="back side">
+                <h1>Mountains3</h1>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div id="mountain4" class="front side"></div>
+            <div class="back side">
+                <h1>Mountains4</h1>
+            </div>
+        </div>
+    
+        <script 
+            src="https://code.jquery.com/jquery-2.2.4.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+            crossorigin="anonymous"></script>
+        <script>
+            $(".card").click(function(e){
+                $(this).toggleClass("flip"); 
+            });
+        </script>
+    
+    </body>
+</html>
