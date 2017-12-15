@@ -8,11 +8,13 @@
             .box1 {
                 width: 25vw;
                 height: 40vh;
-                background-color: red;
+                background-color: lime;
                 border: 1px solid black;
                 text-align: center;
                 display: inline-block;
-                margin-left: 3vw;
+                margin-left:8vw;
+                vertical-align: top;
+                box-sizing: border-box;
                 }
         
             .box2 {
@@ -23,6 +25,8 @@
                 display: inline-block;
                 margin-left: 3vw;
                 text-align: center;
+                vertical-align: top;
+                box-sizing: border-box;
                 }
             
             .box3 {
@@ -33,36 +37,100 @@
                 display: inline-block;
                 margin-left: 3vw;
                 text-align: center;
-                }
+                vertical-align: top;
+                box-sizing: border-box;
+            }
+            
+            .desc {
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+            
+            .remove {
+                margin-left: 1vw;
+                font-size: 2em;
+                color: red;
+                display: none;
+                cursor: pointer;
+            }
+            
+            .remove:hover {
+                cursor: pointer;
+            }
+            
+            .priority {
+                font-weight: bold;
+                color: red;
+            }
+            
+            .crossedOut {
+                text-decoration: line-through;
+            }
+            
         </style>
     </head>
     <body>
         <label>Task Name</label>
         <input type="input" id="task" />
-            <select>
+            <select id="list">
                 <option></option>
-                    <option>Current Tasks</option>
-                    <option>Grocery List</option>    
-                    <option>Future Tasks</option>
+                    <option value="currentTasks">Current Tasks</option>
+                    <option value="groceryTasks">Grocery List</option>    
+                    <option value="futureTasks">Future Tasks</option>
             </select>
-        <button type="button" id="addTask">Add Task</button>
+        <label>Due Date:</label>
+        <input type="date" id="due" />
+        <label>High Priority:</label>
+        <input type="checkbox" id="priority" />
+        <button type="button" id="add">Add Task</button>
+        <br />
         <br />
         <br />
         
-        <div class="box1">Current Tasks</div>
-        <div class="box2">Grocery List</div>
-        <div class="box3">Future Tasks</div>
-        <div id= "container"></div>
+        <div class="box1" id="current">Current Tasks
+            <div class="insideList" id="currentTasks"></div>
+        </div>
+        <div class="box2" id="grocery">Grocery List
+            <div class="insideList" id="groceryTasks"></div>
+        </div>
+        <div class="box3" id="future">Future Tasks
+            <div class="insideList" id="futureTasks"></div>
+        </div>
+        
+        
          <script 
             src="https://code.jquery.com/jquery-2.2.4.js"
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
             crossorigin="anonymous"></script>
         <script src="CommonFunc.js"></script>
         <script>
-            $("#addTask").click(function(e){
-                $("#container").append("<div class='task'><span class='desc'>"+taskDesc+"</span><span class='remove'>x</span></div>");
+             $("#add").click(function(e){
+                 console.log("Add button clicked!");
+                 var taskName = $("#task").val();
+                 $("#task").val("");
+                 var listChoice = $("#list").val();
+                 var dueDate = $("#due").val();
+                 var dueDateText = "";
+                 if(dueDate != ""){
+                     dueDateText = " ("+dueDate+")";
+                 }
+                 var taskPriority = $("#priority").prop("checked");
+                 var priorityText = "";
+                if(taskPriority){
+                    priorityText = " priority";
+                }
+                 console.log("Task Name is:"+taskName);
+                 console.log("List Choice is:"+listChoice);
+                $("#"+listChoice).append("<div class='task "+priorityText+"'><span class='desc'>"+taskName+dueDateText+"</span><span class='remove'>x</span></div>")
+             });
+            
+            $("body").on("click", ".remove", function(e){
+                $(this).parent().remove();
             });
             
+            $("body").on("click", ".desc", function(e){
+                $(this).toggleClass("crossedOut").next().toggle();
+            });
         </script>
     </body>
 </html>
